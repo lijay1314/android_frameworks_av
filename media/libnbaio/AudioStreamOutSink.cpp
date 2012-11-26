@@ -68,7 +68,15 @@ ssize_t AudioStreamOutSink::write(const void *buffer, size_t count)
 }
 
 status_t AudioStreamOutSink::getNextWriteTimestamp(int64_t *timestamp) {
-    return INVALID_OPERATION;
+    ALOG_ASSERT(timestamp != NULL);
+
+    if (NULL == mStream)
+        return INVALID_OPERATION;
+
+    if (NULL == mStream->get_next_write_timestamp)
+        return INVALID_OPERATION;
+
+    return mStream->get_next_write_timestamp(mStream, timestamp);
 }
 
 }   // namespace android
