@@ -2844,6 +2844,7 @@ void AudioFlinger::PlaybackThread::threadLoop_standby()
 {
     ALOGV("Audio hardware entering standby, mixer %p, suspend count %d", this, mSuspended);
     mOutput->stream->common.standby(&mOutput->stream->common);
+    unlink("/dev/.tegra-fqd/audio_on");
 }
 
 void AudioFlinger::MixerThread::threadLoop_mix()

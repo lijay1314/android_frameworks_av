@@ -26,7 +26,7 @@
 #include <sys/time.h>
 #include <dirent.h>
 #include <unistd.h>
-
+#include <fcntl.h>
 #include <string.h>
 
 #include <cutils/atomic.h>
@@ -845,10 +845,15 @@ status_t MediaPlayerService::Client::prepareAsync()
 
 status_t MediaPlayerService::Client::start()
 {
+    int fd;
     ALOGV("[%d] start", mConnId);
     sp<MediaPlayerBase> p = getPlayer();
     if (p == 0) return UNKNOWN_ERROR;
     p->setLooping(mLoop);
+    fd = open("/dev/.tegra-fqd/audio_on", O_CREAT, S_IRUSR);
+    if(fd != -1)
+        close(fd);
+
     return p->start();
 }
 
