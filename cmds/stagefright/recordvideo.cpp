@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+#define OMX_QCOM_COLOR_FormatYVU420SemiPlanar 0x7FA30C00
+#define OMX_TI_COLOR_FormatYUV420PackedSemiPlanar 0x7F000100
 #include "SineSource.h"
 
 #include <binder/ProcessState.h>

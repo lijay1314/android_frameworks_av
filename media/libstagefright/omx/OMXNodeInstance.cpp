@@ -23,7 +23,7 @@
 #include "GraphicBufferSource.h"
 
 #include <OMX_Component.h>
-
+#include <OMX_IVCommon.h>
 #include <binder/IMemory.h>
 #include <gui/BufferQueue.h>
 #include <HardwareAPI.h>
